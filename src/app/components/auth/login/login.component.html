@@ -1,0 +1,32 @@
+<div>
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>DATES</span>
+      <span class="example-spacer"></span>
+      
+    </mat-toolbar>
+</div>
+
+<div class="login-container">
+    <div class="form-header">
+        <h1>Iniciar Sesion</h1>
+    </div>
+    <div class="form-body">
+        <form [formGroup]="loginForm" class="form-login">
+            <mat-form-field appearance="fill">
+                <mat-label>Usuario</mat-label>
+                <input matInput placeholder="Ingresa tu usuario" formControlName="usuario">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput placeholder="Ingresa tu contraseña" formControlName="password">
+            </mat-form-field>
+            <a style="text-align: center;" href="https://support.google.com/accounts/answer/7682439?hl=es-419">¿Olvidaste tu contraseña?</a>
+            <a style="text-align: center;" href="/register">¿No tienes cuenta?</a>
+            <button mat-raised-button color="primary" (click)="login()">Entrar</button>
+        </form>
+    </div>
+</div>
+
