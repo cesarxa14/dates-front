@@ -10,6 +10,7 @@ import { AuthService} from '../../../services/auth.service'
 })
 export class LoginComponent implements OnInit {
 
+  isLoading:boolean;
   loginForm: FormGroup;
   constructor(private _formBuilder : FormBuilder,
               private router: Router,
@@ -20,10 +21,11 @@ export class LoginComponent implements OnInit {
   }
 
   builderForm(){
-    let pattern = '^[a-zA-Z0-9._@\-]*$';
+    // let pattern = '^[a-zA-Z0-9._@\-]*$';
+    let pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     let form = this._formBuilder.group({
       usuario: ['', [Validators.required, Validators.pattern(pattern)]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required, Validators.minLength(8)]]
     }) 
     form.valueChanges.subscribe(()=>{
       // this.invalidForm = this.loginForm.invalid;
@@ -35,9 +37,16 @@ export class LoginComponent implements OnInit {
   get password() { return this.loginForm.controls['password']; }
 
   login(){
+    this.isLoading=true;
+    console.log(this.loginForm.valid);
     console.log(this.loginForm.value)
     this.authService.login(this.loginForm.value).subscribe(res=>{
       console.log('res', res)
+      setTimeout(() => {
+        this.isLoading =false;  
+      }, 1000);
+      
+      // this.router.navigateByUrl('/register');
     })
   }
 

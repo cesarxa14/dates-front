@@ -9,15 +9,18 @@
     </mat-toolbar>
 </div>
 
+
 <div class="login-container">
+    
     <div class="form-header">
         <h1>Iniciar Sesion</h1>
     </div>
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
     <div class="form-body">
         <form [formGroup]="loginForm" class="form-login">
             <mat-form-field appearance="fill">
-                <mat-label>Usuario</mat-label>
-                <input matInput placeholder="Ingresa tu usuario" formControlName="usuario">
+                <mat-label>Correo</mat-label>
+                <input type="email" matInput placeholder="Ingresa tu correo" formControlName="usuario">
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Contraseña</mat-label>
@@ -25,7 +28,7 @@
             </mat-form-field>
             <a style="text-align: center;" href="https://support.google.com/accounts/answer/7682439?hl=es-419">¿Olvidaste tu contraseña?</a>
             <a style="text-align: center;" href="/register">¿No tienes cuenta?</a>
-            <button mat-raised-button color="primary" (click)="login()">Entrar</button>
+            <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login()">Entrar</button>
         </form>
     </div>
 </div>
