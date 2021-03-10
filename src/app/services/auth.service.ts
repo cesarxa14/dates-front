@@ -12,7 +12,10 @@ export class AuthService {
               private router: Router) { }
 
   login(obj){
-    
     return this.http.post(`${this.api_uri}/login`, obj);
+  }
+
+  register(obj){
+    return this.http.post(`${this.api_uri}/register`, obj);
   }
 }
