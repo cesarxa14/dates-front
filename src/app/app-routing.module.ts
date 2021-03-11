@@ -3,12 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent} from './components/main/main.component';
 import { LoginComponent} from './components/auth/login/login.component';
 import { RegisterComponent} from './components/auth/register/register.component';
+import { AuthGuard } from './guards/auth.guard';
+import { HomeClienteComponent } from './components/home-cliente/home-cliente.component';
+import { HomeAsesorComponent } from './components/home-asesor/home-asesor.component';
 
 
 const routes: Routes = [
   {path: '', component: MainComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
+  {path: 'home-cliente', canActivate:[AuthGuard], component: HomeClienteComponent },
+  {path: 'home-asesor',  canActivate:[AuthGuard],  component: HomeAsesorComponent }
 ];
 
 @NgModule({

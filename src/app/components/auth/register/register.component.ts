@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthService} from '../../../services/auth.service';
+import { GeneralService} from '../../../services/general.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -10,14 +12,22 @@ import { AuthService} from '../../../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+  token:any;
+  especilidad_list:any = [];
   isLoading:boolean;
   registerForm: FormGroup;
   constructor(private _formBuilder : FormBuilder,
               private router: Router,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private generalService: GeneralService,
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.registerForm = this.builderForm();
+    this.generalService.getEspecialidad().subscribe(res=>{
+      console.log(res)
+      this.especilidad_list = res;
+    })
   }
 
   builderForm(){
@@ -29,7 +39,7 @@ export class RegisterComponent implements OnInit {
       fecha_naci: [null, [Validators.required]],
       tipo_usuario: [null, [Validators.required]],
       correo: [null, [Validators.required, Validators.pattern(pattern_email)]],
-      password: [null, [Validators.required]],
+      password: [null, [Validators.required, Validators.minLength(8)]],
       
     }) 
     form.valueChanges.subscribe(()=>{
@@ -40,9 +50,19 @@ export class RegisterComponent implements OnInit {
 
   register(){
     console.log('register', this.registerForm.value);
+    this.isLoading = true;
+    this.authService.register(this.registerForm.value).subscribe((res:any)=>{
+      setTimeout(() => {
+        this.isLoading = false;  
+      }, 1000);
 
-    this.authService.register(this.registerForm.value).subscribe(res=>{
-      console.log('sdds', res);
+      if(res.status == 0){
+        localStorage.setItem('token', res.token);
+        this.token = localStorage.getItem('token');
+        this.router.navigateByUrl('/home-asesor');
+      }else{
+        this._snackBar.open(res.msj, 'Cerrar', {duration:1000})
+      }  
     })
   }
 

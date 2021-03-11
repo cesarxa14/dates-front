@@ -11,6 +11,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
 
+  token:any;
   isLoading:boolean;
   loginForm: FormGroup;
   constructor(private _formBuilder : FormBuilder,
@@ -39,18 +40,19 @@ export class LoginComponent implements OnInit {
   get password() { return this.loginForm.controls['password']; }
 
   login(){
-    this.isLoading=true;
-    console.log(this.loginForm.valid);
-    console.log(this.loginForm.value)
+    this.isLoading = true;
     this.authService.login(this.loginForm.value).subscribe((res:any)=>{
-      console.log('res', res)
-      this._snackBar.open(res.msj, 'Cerrar')
       setTimeout(() => {
-        this.isLoading =false;  
+        this.isLoading = false;  
       }, 1000);
+
       if(res.status == 0){
-        this.router.navigateByUrl('/register');
-      }
+        localStorage.setItem('token', res.token);
+        this.token = localStorage.getItem('token');
+        this.router.navigateByUrl('/home-cliente');
+      }else{
+        this._snackBar.open(res.msj, 'Cerrar', {duration:1000})
+      }      
       
     })
   }

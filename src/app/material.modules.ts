@@ -14,7 +14,12 @@ import { MatBadgeModule} from '@angular/material/badge';
 import { MatTableModule} from '@angular/material/table';
 import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
-import { MatIconModule} from '@angular/material/icon'
+import { MatIconModule} from '@angular/material/icon';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material';
+
+
+
 
 
 
@@ -35,7 +40,9 @@ import { MatIconModule} from '@angular/material/icon'
         MatTableModule,
         MatProgressBarModule,
         MatSelectModule,
-        MatInputModule
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     exports: [
         MatTabsModule,
@@ -53,7 +60,9 @@ import { MatIconModule} from '@angular/material/icon'
         MatTableModule,
         MatProgressBarModule,
         MatSelectModule,
-        MatIconModule
+        MatIconModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ]
 })
 
