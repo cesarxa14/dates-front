@@ -54,14 +54,15 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.registerForm.value).subscribe((res:any)=>{
       setTimeout(() => {
         this.isLoading = false;  
+        
       }, 1000);
-
+      this._snackBar.open(res.msj, 'Cerrar', {duration:1000})
       if(res.status == 0){
         localStorage.setItem('token', res.token);
         this.token = localStorage.getItem('token');
         this.router.navigateByUrl('/home-asesor');
       }else{
-        this._snackBar.open(res.msj, 'Cerrar', {duration:1000})
+        
       }  
     })
   }

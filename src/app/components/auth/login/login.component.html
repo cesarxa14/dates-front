@@ -1,8 +1,5 @@
 <div>
     <mat-toolbar color="primary">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
       <span>DATES</span>
       <span class="example-spacer"></span>
       
@@ -27,7 +24,7 @@
                 <input type="password" matInput placeholder="Ingresa tu contraseña" formControlName="password">
             </mat-form-field>
             <a style="text-align: center;" href="https://support.google.com/accounts/answer/7682439?hl=es-419">¿Olvidaste tu contraseña?</a>
-            <a style="text-align: center;" href="/register">¿No tienes cuenta?</a>
+            <a style="text-align: center;" routerLink="/register">¿No tienes cuenta?</a>
             <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login()">Entrar</button>
         </form>
     </div>
