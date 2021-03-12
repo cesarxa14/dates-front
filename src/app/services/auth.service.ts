@@ -22,4 +22,9 @@ export class AuthService {
   loggedIn(){
     return !!localStorage.getItem('token');
   }
+
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login');
+  }
 }

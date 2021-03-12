@@ -45,11 +45,15 @@ export class LoginComponent implements OnInit {
       setTimeout(() => {
         this.isLoading = false;  
       }, 1000);
-
+      console.log('respues', res)
       if(res.status == 0){
         localStorage.setItem('token', res.token);
         this.token = localStorage.getItem('token');
+        if(res.metadata.id_rol === 1)
         this.router.navigateByUrl('/home-cliente');
+        else if(res.metadata.id_rol === 2){
+          this.router.navigateByUrl('/home-asesor');
+        }
       }else{
         this._snackBar.open(res.msj, 'Cerrar', {duration:1000})
       }      

@@ -52,6 +52,7 @@ export class RegisterComponent implements OnInit {
     console.log('register', this.registerForm.value);
     this.isLoading = true;
     this.authService.register(this.registerForm.value).subscribe((res:any)=>{
+      console.log('resp', res);
       setTimeout(() => {
         this.isLoading = false;  
         
@@ -60,7 +61,11 @@ export class RegisterComponent implements OnInit {
       if(res.status == 0){
         localStorage.setItem('token', res.token);
         this.token = localStorage.getItem('token');
-        this.router.navigateByUrl('/home-asesor');
+        if(res.metadata.id_rol === 1)
+        this.router.navigateByUrl('/home-cliente');
+        else if(res.metadata.id_rol === 2){
+          this.router.navigateByUrl('/home-asesor');
+        }
       }else{
         
       }  
