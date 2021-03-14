@@ -17,6 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule} from '@angular/material/icon';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
+import {MatListModule} from '@angular/material/list';
+import { MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -42,7 +44,9 @@ import {MatNativeDateModule} from '@angular/material';
         MatSelectModule,
         MatInputModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatListModule,
+        MatMenuModule
     ],
     exports: [
         MatTabsModule,
@@ -62,7 +66,9 @@ import {MatNativeDateModule} from '@angular/material';
         MatSelectModule,
         MatIconModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatListModule,
+        MatMenuModule
     ]
 })
 

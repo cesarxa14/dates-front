@@ -13,6 +13,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class RegisterComponent implements OnInit {
 
   token:any;
+  metadata:any;
   especilidad_list:any = [];
   isLoading:boolean;
   registerForm: FormGroup;
@@ -53,13 +54,12 @@ export class RegisterComponent implements OnInit {
     this.isLoading = true;
     this.authService.register(this.registerForm.value).subscribe((res:any)=>{
       console.log('resp', res);
-      setTimeout(() => {
-        this.isLoading = false;  
-        
-      }, 1000);
+      this.isLoading = false;
       this._snackBar.open(res.msj, 'Cerrar', {duration:1000})
       if(res.status == 0){
+        this.metadata = res.metadata;
         localStorage.setItem('token', res.token);
+        localStorage.setItem('metadata', JSON.stringify(this.metadata));
         this.token = localStorage.getItem('token');
         if(res.metadata.id_rol === 1)
         this.router.navigateByUrl('/home-cliente');

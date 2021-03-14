@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Globals} from '../../../../globals';
 import { Router} from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthService} from '../../../services/auth.service';
+import { GeneralService} from '../../../services/general.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -12,15 +14,20 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit {
 
   token:any;
+  metadata:any;
   isLoading:boolean;
   loginForm: FormGroup;
   constructor(private _formBuilder : FormBuilder,
               private router: Router,
               private authService: AuthService,
-              private _snackBar: MatSnackBar) { }
+              private generalService: GeneralService,
+              private _snackBar: MatSnackBar,
+              private _global: Globals) { }
 
   ngOnInit() {
     this.loginForm = this.builderForm();
+    let meta= localStorage.getItem('metadata');
+    console.log(meta)
   }
 
   builderForm(){
@@ -46,11 +53,17 @@ export class LoginComponent implements OnInit {
         this.isLoading = false;  
       }, 1000);
       console.log('respues', res)
+      
       if(res.status == 0){
+        this.metadata = res.metadata;
+        this.generalService.nombres_usuario.next(this.metadata.nombres);
+       
+        localStorage.setItem('metadata', JSON.stringify(this.metadata));
         localStorage.setItem('token', res.token);
         this.token = localStorage.getItem('token');
-        if(res.metadata.id_rol === 1)
-        this.router.navigateByUrl('/home-cliente');
+        if(res.metadata.id_rol === 1){
+          this.router.navigateByUrl('/home-cliente');
+        }
         else if(res.metadata.id_rol === 2){
           this.router.navigateByUrl('/home-asesor');
         }

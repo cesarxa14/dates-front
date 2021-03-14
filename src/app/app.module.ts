@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MaterialModules} from './material.modules';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { Globals} from '../globals'
 
 import { MAT_DATE_LOCALE } from '@angular/material/core'
 
@@ -14,6 +15,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { HomeClienteComponent } from './components/home-cliente/home-cliente.component';
 import { HomeAsesorComponent } from './components/home-asesor/home-asesor.component';
+import { ModalAgregarConsultaComponent } from './components/modal-agregar-consulta/modal-agregar-consulta.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { HomeAsesorComponent } from './components/home-asesor/home-asesor.compon
     LoginComponent,
     RegisterComponent,
     HomeClienteComponent,
-    HomeAsesorComponent
+    HomeAsesorComponent,
+    ModalAgregarConsultaComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,11 @@ import { HomeAsesorComponent } from './components/home-asesor/home-asesor.compon
     HttpClientModule
   ],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+    Globals
+  ],
+  entryComponents:[
+    ModalAgregarConsultaComponent
   ],
   bootstrap: [AppComponent]
 })

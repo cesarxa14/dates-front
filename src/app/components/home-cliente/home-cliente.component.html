@@ -1,8 +1,26 @@
-<div>
-    <mat-toolbar color="primary">
-      <span>DATES</span>
-      <span class="example-spacer"></span>
-      <button mat-raised-button color="warn" (click)="logout()">Cerrar Sesion</button>
-    </mat-toolbar>
-</div>
+<mat-toolbar color="primary">
+  <mat-nav-list>
+    <mat-list-item>
+      <button mat-menu-item class="item-navbar">Home<mat-icon class="item-navbar">home</mat-icon></button>
+    </mat-list-item>
+  </mat-nav-list>
+  <mat-nav-list>
+    <mat-list-item>
+      <button mat-menu-item [matMenuTriggerFor]="claimsmenu" class="item-navbar">{{nombres_usuario}}</button>
+    </mat-list-item>
+  </mat-nav-list>
+  <mat-menu #claimsmenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>Ver Perfil</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar Sesion </span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
 <h1>Home Cliente</h1>
+
+<h2>Bienvenido {{nombres_usuario}}!!!</h2>

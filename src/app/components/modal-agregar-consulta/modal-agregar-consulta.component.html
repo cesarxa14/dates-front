@@ -1,0 +1,16 @@
+<div class="form-body">
+    <form [formGroup]="agregarConsultaForm" class="form-agregarConsulta">
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre de Consulta</mat-label>
+            <input type="email" matInput placeholder="Ingresa nombre de la consulta" formControlName="nombreConsulta">
+        </mat-form-field>
+        
+        <mat-form-field class="foto" appearance="fill" >
+            <mat-label>Adjuntar foto</mat-label>
+            <input matInput [disabled]="true">
+            <button mat-raised-button color=primary><input type="file" formControlName="fotoConsulta" (change)="onFileChange($event)"></button>
+        </mat-form-field>
+        
+        <button mat-raised-button color="primary" [disabled]="!agregarConsultaForm.valid" (click)="crearConsulta()">Crear Consulta</button>
+    </form>
+</div>

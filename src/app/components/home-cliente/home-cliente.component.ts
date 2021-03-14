@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { GeneralService} from '../../services/general.service'
+import {Globals} from '../../../globals';
 
 @Component({
   selector: 'app-home-cliente',
@@ -8,9 +10,17 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HomeClienteComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  metadata:any;
+  nombres_usuario:string;
+  constructor(private authService:AuthService,
+              private generalService:GeneralService,
+              private _global: Globals) { }
 
   ngOnInit() {
+    this.metadata = JSON.parse(localStorage.getItem('metadata'));
+    console.log(this.metadata)
+    this.nombres_usuario = this.metadata.nombres+ ' ' + this.metadata.apellido_pa + ' ' + this.metadata.apellido_ma;
+
   }
 
   logout(){
