@@ -7,6 +7,120 @@
       
     </mat-toolbar>
 </div>
-<h1>Home Asesor</h1>
+
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <span class="material-icons">
+        double_arrow
+        </span>
+    </button>
+  </div>
+  <div class="asesor-navbar">
+    <div class="asesor-navbar-pages">
+      <div>
+        <p>Home</p>
+      </div>
+      <div>
+        <p>Explorar</p>
+      </div>
+    </div>
+
+    <div class="asesor-navbar-icons">
+      <div>
+        <button mat-menu-item>
+          <mat-icon>sms</mat-icon>
+        </button>
+      </div>
+      <div>
+        <button mat-menu-item>
+          <mat-icon>notifications</mat-icon>
+        </button>
+      </div>
+      <div>
+        <button mat-menu-item>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="panel-mis-consultas">
+    <h2>Mis consultas</h2>
+    <div class="carousel">
+      <div class="carousel-arrow-left">
+        <button mat-menu-item>
+          <mat-icon>arrow_back_ios_new</mat-icon>
+        </button>
+      </div>
+      <div class="items-consultas">
+        <mat-card class="example-card">
+          <img mat-card-image src="https://areajugones.sport.es/wp-content/uploads/2019/12/dragon-ball-z-goku-cell.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>Titulo</p>
+            <p>Especialidad</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+
+
+
+        <mat-card class="example-card">
+          <img mat-card-image src="https://areajugones.sport.es/wp-content/uploads/2019/12/dragon-ball-z-goku-cell.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>Titulo</p>
+            <p>Especialidad</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+
+
+
+
+        <mat-card class="example-card">
+          <img mat-card-image src="https://areajugones.sport.es/wp-content/uploads/2019/12/dragon-ball-z-goku-cell.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>Titulo</p>
+            <p>Especialidad</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+
+
+
+        
+
+      </div>
+      <div class="carousel-arrow-right">
+        <button mat-menu-item>
+          <mat-icon>arrow_forward_ios</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div role="tablist" class="carousel-indicadores"></div>
+    
+  </div>
 
 <button mat-raised-button color="warn" (click)="agregarConsulta()">Agregar consulta</button>
+
+
+
+</mat-drawer-container>

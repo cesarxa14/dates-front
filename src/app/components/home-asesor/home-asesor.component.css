@@ -1,0 +1,91 @@
+.example-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: initial;
+    justify-content: start;
+    position:absolute;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }
+
+  mat-drawer {
+    width: 200px;
+  }
+  .asesor-navbar{
+      display: flex;
+      justify-content: flex-start;
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-top: 20px;
+      border: 2px solid black;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+  .asesor-navbar-pages{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+  }
+
+  .asesor-navbar-pages div{
+      margin-left: 10px;
+  }
+
+  .asesor-navbar-icons{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+  }
+  .asesor-navbar-icons div{
+    margin-left: 10px;
+}
+
+.panel-mis-consultas{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 50px;
+    border: 
+    4px solid black;
+}
+
+.carousel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.carousel-arrow-left{
+    height: 100px;
+    width: 30px;
+}
+.carousel-arrow-right{
+    height: 100px;
+    width: 30px;
+}
+
+.items-consultas{
+    display: flex;
+    flex-direction: row;
+    height: 310px;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 2px solid red;
+    gap: 50px;
+}
+
+.example-card {
+    max-width: 250px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }

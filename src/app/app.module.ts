@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { MaterialModules} from './material.modules';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { Globals} from '../globals'
+import { Globals} from '../globals';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 import { MAT_DATE_LOCALE } from '@angular/material/core'
 
@@ -34,7 +35,8 @@ import { ModalAgregarConsultaComponent } from './components/modal-agregar-consul
     MaterialModules,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCarouselModule.forRoot()
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
