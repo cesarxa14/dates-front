@@ -6,14 +6,12 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ConsultaService {
-
-  
+export class UserService {
   private api_uri = environment.API_URL;
   constructor(private http: HttpClient,
               private router: Router) { }
 
-  crearConsulta(obj){
-    return this.http.post(`${this.api_uri}/crearConsulta`, obj);
+  switchedAsesorOnline(id_user){
+    return this.http.post(`${this.api_uri}/switchedAsesorOnline`, id_user)
   }
 }

@@ -1,126 +1,111 @@
 <div>
     <mat-toolbar color="primary">
-      <span>DATES</span>
-      <span>{{nombre}}</span>
-      <span class="example-spacer"></span>
-      <button mat-raised-button color="warn">Cerrar Sesion</button>
-      
+      <span>DATES</span>     
     </mat-toolbar>
 </div>
 
-
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
-  </mat-drawer>
-
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      <span class="material-icons">
-        double_arrow
-        </span>
-    </button>
+<div class="prime-menu">
+  <p-menubar  [model]="items">
+    <input type="text" pInputText placeholder="Search">
+  </p-menubar>
+</div>
+<p-toast position="top-right"></p-toast>
+<p-sidebar [(visible)]="displaySideNav">
+  <div style="text-align: center;">
+    <img style="height: 80px; width: 80px; border-radius: 30%;" src="https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png" alt="">
+    <h2>Nombre y Apellido</h2>
+    <p-inputSwitch (onChange)="switchedOnline($event)" [(ngModel)]="flag_Online"></p-inputSwitch>
   </div>
-  <div class="asesor-navbar">
-    <div class="asesor-navbar-pages">
-      <div>
-        <p>Home</p>
-      </div>
-      <div>
-        <p>Explorar</p>
-      </div>
-    </div>
+</p-sidebar>
+<div class="btn-toggle-sidenav">
+  <p-button (click)="displaySideNav = true" class="p-button-secondary" icon="pi pi-chevron-right"></p-button>
+</div>
 
-    <div class="asesor-navbar-icons">
-      <div>
-        <button mat-menu-item>
-          <mat-icon>sms</mat-icon>
-        </button>
-      </div>
-      <div>
-        <button mat-menu-item>
-          <mat-icon>notifications</mat-icon>
-        </button>
-      </div>
-      <div>
-        <button mat-menu-item>
-          <mat-icon>arrow_drop_down</mat-icon>
-        </button>
-      </div>
-    </div>
-  </div>
+
+<div class="prime-fieldset-consultas">
+  <p-fieldset legend="Mis Consultas">
+    <button style="float: right;" pButton type="button" label="" icon="pi pi-plus" (click)="agregarConsulta()" pTooltip="Agregar Consulta" tooltipPosition="top"></button>
+    <p-carousel [value]="productos" [numVisible]="3" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+      <ng-template let-product pTemplate="item">
+        <!-- <div class="product-item">
+            <div class="product-item-content">
+                <div class="p-mb-3">
+                </div>
+                <div>
+                    <h4 class="p-mb-1">{{product.name}}</h4>
+                    <h6 class="p-mt-0 p-mb-3">${{product.code}}</h6>
+                    <span [class]="'product-badge status-'+product.description.toLowerCase()">{{product.description}}</span>
+                    <div class="car-buttons p-mt-5">
+                        <p-button type="button" styleClass="p-button p-button-rounded p-mr-2" icon="pi pi-search"></p-button>
+                        <p-button type="button" styleClass="p-button-success p-button-rounded p-mr-2" icon="pi pi-star"></p-button>
+                        <p-button type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-cog"></p-button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <p-card>
+          <ng-template pTemplate="header">
+            Titulo consulta
+          </ng-template>
+            Imagen consulta
+          <ng-template pTemplate="footer">
+              Espec,y Descrip consulta
+          </ng-template>
+      </p-card>
+    </ng-template>
+    </p-carousel>
+     <!--       <div class="items-consultas">
+          <mat-card class="example-card">
+            <img mat-card-image src="https://areajugones.sport.es/wp-content/uploads/2019/12/dragon-ball-z-goku-cell.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>Titulo</p>
+              <p>Especialidad</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card> -->
   
-  <div class="panel-mis-consultas">
-    <h2>Mis consultas</h2>
-    <div class="carousel">
-      <div class="carousel-arrow-left">
-        <button mat-menu-item>
-          <mat-icon>arrow_back_ios_new</mat-icon>
-        </button>
-      </div>
-      <div class="items-consultas">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://areajugones.sport.es/wp-content/uploads/2019/12/dragon-ball-z-goku-cell.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p>Titulo</p>
-            <p>Especialidad</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-raised-button>LIKE</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions>
-        </mat-card>
+  </p-fieldset>
+</div>
+
+<div class="prime-fieldset-citas">
+  <p-fieldset legend="Mis Citas" >
+    <!-- <div class="citas-list">
+      <p-table [value]="cars">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Vin</th>
+                <th>Year</th>
+                <th>Brand</th>
+                <th>Color</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-car>
+            <tr>
+                <td>{{car.vin}}</td>
+                <td>{{car.year}}</td>
+                <td>{{car.brand}}</td>
+                <td>{{car.color}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div> -->
+   
+  
+  </p-fieldset>
+</div>
+
+<p-dialog header="Crear Consulta" [(visible)]="display" [style]="{width: '50vw'}" modal="true">
+  <app-modal-agregar-consulta></app-modal-agregar-consulta>
+</p-dialog>
 
 
 
-        <mat-card class="example-card">
-          <img mat-card-image src="https://areajugones.sport.es/wp-content/uploads/2019/12/dragon-ball-z-goku-cell.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p>Titulo</p>
-            <p>Especialidad</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-raised-button>LIKE</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions>
-        </mat-card>
+
+<!-- <button mat-raised-button color="warn" (click)="agregarConsulta()">Agregar consulta</button> -->
 
 
 
 
-        <mat-card class="example-card">
-          <img mat-card-image src="https://areajugones.sport.es/wp-content/uploads/2019/12/dragon-ball-z-goku-cell.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p>Titulo</p>
-            <p>Especialidad</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-raised-button>LIKE</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions>
-        </mat-card>
-
-
-
-        
-
-      </div>
-      <div class="carousel-arrow-right">
-        <button mat-menu-item>
-          <mat-icon>arrow_forward_ios</mat-icon>
-        </button>
-      </div>
-    </div>
-    <div role="tablist" class="carousel-indicadores"></div>
-    
-  </div>
-
-<button mat-raised-button color="warn" (click)="agregarConsulta()">Agregar consulta</button>
-
-
-
-</mat-drawer-container>

@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModules} from './material.modules';
+import { PrimeModules} from './prime.modules'
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { Globals} from '../globals';
-import { MatCarouselModule } from '@ngmodule/material-carousel';
+
 
 import { MAT_DATE_LOCALE } from '@angular/material/core'
 
@@ -17,6 +18,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { HomeClienteComponent } from './components/home-cliente/home-cliente.component';
 import { HomeAsesorComponent } from './components/home-asesor/home-asesor.component';
 import { ModalAgregarConsultaComponent } from './components/modal-agregar-consulta/modal-agregar-consulta.component';
+
 
 @NgModule({
   declarations: [
@@ -33,10 +35,10 @@ import { ModalAgregarConsultaComponent } from './components/modal-agregar-consul
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModules,
+    PrimeModules,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    MatCarouselModule.forRoot()
+    HttpClientModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},

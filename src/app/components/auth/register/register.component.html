@@ -38,8 +38,8 @@
             <mat-form-field appearance="fill">
                 <mat-label>Tipo de usuario</mat-label>
                 <mat-select formControlName="tipo_usuario">
-                    <mat-option *ngFor="let espe of especilidad_list"  [value]="espe.id_especialidad">
-                        {{espe.descripcion}}
+                    <mat-option *ngFor="let rol of roles_list"  [value]="rol.id_rol">
+                        {{rol.desc_rol}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

@@ -2,14 +2,36 @@
     <form [formGroup]="agregarConsultaForm" class="form-agregarConsulta">
         <mat-form-field appearance="fill">
             <mat-label>Nombre de Consulta</mat-label>
-            <input type="email" matInput placeholder="Ingresa nombre de la consulta" formControlName="nombreConsulta">
+            <input type="email" matInput placeholder="Ingrese el nombre de la consulta" formControlName="nombreConsulta">
         </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Descripción de Consulta</mat-label>
+            <input  matInput placeholder="Ingrese la descripción de la consulta" formControlName="descripcionConsulta">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Especialidad</mat-label>
+            <mat-select formControlName="especialidad">
+                <mat-option *ngFor="let espe of especialidad_list"  [value]="espe.id_especialidad">
+                    {{espe.descripcion}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Precio</mat-label>
+            <input type="number" matInput placeholder="Ingrese el precio" formControlName="precioConsulta">
+        </mat-form-field>
+
+        
         
         <mat-form-field class="foto" appearance="fill" >
             <mat-label>Adjuntar foto</mat-label>
             <input matInput [disabled]="true">
             <button mat-raised-button color=primary><input type="file" formControlName="fotoConsulta" (change)="onFileChange($event)"></button>
         </mat-form-field>
+
+        
         
         <button mat-raised-button color="primary" [disabled]="!agregarConsultaForm.valid" (click)="crearConsulta()">Crear Consulta</button>
     </form>

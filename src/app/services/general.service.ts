@@ -15,7 +15,13 @@ export class GeneralService {
               private router: Router) { }
               
 
-  getEspecialidad(){
-    return this.http.get(`${this.api_uri}/getEspecialidad`);
+  getRoles(){
+    return this.http.get(`${this.api_uri}/getRoles`);
   }
+
+  getEspecialidades(){
+    return this.http.get(`${this.api_uri}/getEspecialidades`);
+  }
+
+  get
 }
