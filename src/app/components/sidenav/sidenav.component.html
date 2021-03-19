@@ -1,0 +1,11 @@
+<p-sidebar [(visible)]="displaySideNav">
+    <div style="text-align: center;">
+      <img style="height: 80px; width: 80px; border-radius: 30%;" src="https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png" alt="">
+      <h2>{{user_nombre}} {{user_apellido_pa}}</h2>
+      <p-inputSwitch (onChange)="switchedOnline($event)" [(ngModel)]="flag_Online"></p-inputSwitch>
+    </div>
+</p-sidebar>
+
+<div class="btn-toggle-sidenav">
+    <p-button (click)="displaySideNav = true" class="p-button-secondary" icon="pi pi-chevron-right"></p-button>
+  </div>

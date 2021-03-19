@@ -4,24 +4,28 @@
     </mat-toolbar>
 </div>
 
+<app-sidenav></app-sidenav>
+
 <div class="prime-menu">
   <p-menubar  [model]="items">
     <input type="text" pInputText placeholder="Search">
   </p-menubar>
 </div>
 <p-toast position="top-right"></p-toast>
-<p-sidebar [(visible)]="displaySideNav">
+<!-- <p-sidebar [(visible)]="displaySideNav">
   <div style="text-align: center;">
     <img style="height: 80px; width: 80px; border-radius: 30%;" src="https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png" alt="">
     <h2>Nombre y Apellido</h2>
     <p-inputSwitch (onChange)="switchedOnline($event)" [(ngModel)]="flag_Online"></p-inputSwitch>
   </div>
-</p-sidebar>
-<div class="btn-toggle-sidenav">
+</p-sidebar> -->
+<!-- <div class="btn-toggle-sidenav">
   <p-button (click)="displaySideNav = true" class="p-button-secondary" icon="pi pi-chevron-right"></p-button>
-</div>
+</div> -->
 
-
+<!-- <p-divider align="right" type="dashed">
+  <span class="p-tag" (click)="console()">Ver todo</span>
+</p-divider> -->
 <div class="prime-fieldset-consultas">
   <p-fieldset legend="Mis Consultas">
     <button style="float: right;" pButton type="button" label="" icon="pi pi-plus" (click)="agregarConsulta()" pTooltip="Agregar Consulta" tooltipPosition="top"></button>
@@ -70,9 +74,12 @@
   </p-fieldset>
 </div>
 
+
+
 <div class="prime-fieldset-citas">
   <p-fieldset legend="Mis Citas" >
     <!-- <div class="citas-list">
+      
       <p-table [value]="cars">
         <ng-template pTemplate="header">
             <tr>
@@ -92,13 +99,46 @@
         </ng-template>
     </p-table>
     </div> -->
+    <p-table [value]="productos">
+      <ng-template pTemplate="caption">
+          <div class="p-d-flex p-ai-center p-jc-between">
+              Products
+              <p-button icon="pi pi-refresh"></p-button>
+          </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Reviews</th>
+              <th>Status</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+          <tr>
+              <td>{{product.name}}</td>
+              <td><img [src]="product.image" [alt]="product.name" width="100" class="p-shadow-4" /></td>
+              <td>{{product.price | currency:'USD'}}</td>
+              <td>{{product.category}}</td>
+              <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
+              <td><span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span></td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+          <div class="p-d-flex p-ai-center p-jc-between">
+              In total there are {{productos ? productos.length : 0 }} products.
+          </div>
+      </ng-template>
+  </p-table>
    
   
   </p-fieldset>
 </div>
 
 <p-dialog header="Crear Consulta" [(visible)]="display" [style]="{width: '50vw'}" modal="true">
-  <app-modal-agregar-consulta></app-modal-agregar-consulta>
+  <app-modal-agregar-consulta (closeDialog)="closeDialog()"></app-modal-agregar-consulta>
 </p-dialog>
 
 

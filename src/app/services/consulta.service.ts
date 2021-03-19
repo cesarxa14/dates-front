@@ -14,6 +14,11 @@ export class ConsultaService {
               private router: Router) { }
 
   crearConsulta(obj){
-    return this.http.post(`${this.api_uri}/crearConsulta`, obj);
+    console.log(obj)
+    return this.http.post(`${this.api_uri}/api/consultants/crearConsulta`, obj);
+  }
+
+  getConsultasByAsesor(params){
+    return this.http.get(`${this.api_uri}/api/consultants/getConsultasByAsesor`, {params});
   }
 }

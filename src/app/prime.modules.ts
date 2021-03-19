@@ -12,8 +12,15 @@ import {DialogModule} from 'primeng/dialog';
 import {TooltipModule} from 'primeng/tooltip';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {ToastModule} from 'primeng/toast';
-import {MessageService} from 'primeng/api';
+import {DividerModule} from 'primeng/divider';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {DropdownModule} from 'primeng/dropdown';
+import {FileUploadModule} from 'primeng/fileupload';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {ProgressBarModule} from 'primeng/progressbar';
 
+
+import {FilterService, MessageService, PrimeNGConfig} from 'primeng/api';
 
 
 
@@ -32,7 +39,14 @@ import {MessageService} from 'primeng/api';
        DialogModule,
        TooltipModule,
        InputSwitchModule,
-       ToastModule
+       ToastModule,
+       DividerModule,
+       InputTextareaModule,
+       DropdownModule,
+       FileUploadModule,
+       ScrollPanelModule,
+       ProgressBarModule
+       
        
 
     ],
@@ -49,9 +63,15 @@ import {MessageService} from 'primeng/api';
        DialogModule,
        TooltipModule,
        InputSwitchModule,
-       ToastModule
+       ToastModule,
+       DividerModule,
+       InputTextareaModule,
+       DropdownModule,
+       FileUploadModule,
+       ScrollPanelModule,
+       ProgressBarModule
     ],
-    providers: [MessageService]
+    providers: [MessageService, FilterService, PrimeNGConfig]
 })
 
 export class PrimeModules {}

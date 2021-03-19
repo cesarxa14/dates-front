@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService} from '../../services/auth.service';
 import { GeneralService} from '../../services/general.service';
-import { UserService} from '../../services/user.service'
+import { ConsultaService} from '../../services/consulta.service'
+import { UserService} from '../../services/user.service';
 import {Globals} from '../../../globals';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MenuItem} from 'primeng/api';
 import { ModalAgregarConsultaComponent} from '../modal-agregar-consulta/modal-agregar-consulta.component';
 import {MessageService} from 'primeng/api';
+import { HttpParams } from '@angular/common/http';
 
 
 
@@ -17,21 +19,22 @@ import {MessageService} from 'primeng/api';
 })
 export class HomeAsesorComponent implements OnInit {
 
-  flag_Online:boolean;
-  displaySideNav:boolean;
+  
   display:boolean = false;
   productos:any;
   responsiveOptions:any;
   items: MenuItem[];
   nombres_usuario:string;
-  metadata:any;
+  metadata:any = JSON.parse(localStorage.getItem('metadata'));
+  token:any = localStorage.getItem('token');
   showFiller = false;
   constructor(private authService: AuthService,
               private generalService: GeneralService,
               private userService: UserService,
               private _global: Globals,
               public dialog: MatDialog,
-              private messageService: MessageService
+              private messageService: MessageService,
+              private consultaService: ConsultaService
               // public filterService: FilterService
               ) { 
                 
@@ -58,19 +61,19 @@ export class HomeAsesorComponent implements OnInit {
                                     "code": "f230fh0g3",
                                     "name": "Bamboo Watch",
                                     "description": "Product Description",
-                                    "image": "bamboo-watch.jpg",
+                                    "image": "https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png",
                                     "price": 65,
                                     "category": "Accessories",
                                     "quantity": 24,
                                     "inventoryStatus": "INSTOCK",
-                                    "rating": 5
+                                    "rating": 3.5
                                   },
                                   {
                                     "id": "1001",
                                     "code": "nvklal433",
                                     "name": "Black Watch",
                                     "description": "Product Description",
-                                    "image": "black-watch.jpg",
+                                    "image": "https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png",
                                     "price": 72,
                                     "category": "Accessories",
                                     "quantity": 61,
@@ -82,7 +85,7 @@ export class HomeAsesorComponent implements OnInit {
                                     "code": "zz21cz3c1",
                                     "name": "Blue Band",
                                     "description": "Product Description",
-                                    "image": "blue-band.jpg",
+                                    "image": "https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png",
                                     "price": 79,
                                     "category": "Fitness",
                                     "quantity": 2,
@@ -92,6 +95,12 @@ export class HomeAsesorComponent implements OnInit {
               }
 
   ngOnInit() {
+    const params = new HttpParams()
+    .set('token', this.token)
+    .set('id_persona', this.metadata.id_persona);
+    this.consultaService.getConsultasByAsesor(params).subscribe((res:any)=>{
+      console.log(res);
+    })
     this.items = [
       {
       label: 'Home',
@@ -123,28 +132,17 @@ export class HomeAsesorComponent implements OnInit {
 
   }
 
-  switchedOnline(e){
-
-    let obj = {
-      id_user: this.metadata.id_persona,
-      flag_online: e.checked
-    }
-    
-
-    this.userService.switchedAsesorOnline(obj).subscribe(res=>{
-      if(obj.flag_online === true){
-        this.messageService.add({severity:'success', summary:'En Linea', detail:'Los demás usuarios verán podrán ver su estado'});
-      } else{
-        this.messageService.add({severity:'error', summary:'Offline', detail:'Los demás usuarios verán podrán ver su estado'});
-      }
-      console.log(res);
-    })
-    console.log(e.checked);
-
-  }
 
   logout(){
     this.authService.logout();
+  }
+
+  console(){
+    console.log('holaa csmree')
+  }
+
+  closeDialog(){
+    this.display = false;
   }
 
 }

@@ -4,6 +4,7 @@ import { MaterialModules} from './material.modules';
 import { PrimeModules} from './prime.modules'
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { AuthInterceptorService} from './services/auth-interceptor.service';
 import { Globals} from '../globals';
 
 
@@ -18,6 +19,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { HomeClienteComponent } from './components/home-cliente/home-cliente.component';
 import { HomeAsesorComponent } from './components/home-asesor/home-asesor.component';
 import { ModalAgregarConsultaComponent } from './components/modal-agregar-consulta/modal-agregar-consulta.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { ModalAgregarConsultaComponent } from './components/modal-agregar-consul
     RegisterComponent,
     HomeClienteComponent,
     HomeAsesorComponent,
-    ModalAgregarConsultaComponent
+    ModalAgregarConsultaComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,12 @@ import { ModalAgregarConsultaComponent } from './components/modal-agregar-consul
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-    Globals
+    Globals,
+    // {
+    //   provide:HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptorService,
+    //   multi:true
+    // }
   ],
   entryComponents:[
     ModalAgregarConsultaComponent

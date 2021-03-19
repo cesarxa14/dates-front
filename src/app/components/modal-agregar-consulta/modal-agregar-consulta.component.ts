@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { element } from 'protractor';
 import { ConsultaService} from '../../services/consulta.service';
-import { GeneralService} from '../../services/general.service'
+import { GeneralService} from '../../services/general.service';
+import {MessageService} from 'primeng/api';
+import {FileUpload} from 'primeng/fileupload';
 
 @Component({
   selector: 'app-modal-agregar-consulta',
@@ -10,30 +12,34 @@ import { GeneralService} from '../../services/general.service'
   styleUrls: ['./modal-agregar-consulta.component.css']
 })
 export class ModalAgregarConsultaComponent implements OnInit {
-
+  
+  @Output() closeDialog = new EventEmitter<any>();
+  isLoading: boolean = false;
+  token:any = localStorage.getItem('token');
+  metadata:any = localStorage.getItem('metadata');
   especialidad_list:any;
   agregarConsultaForm: FormGroup;
   selectedFoto: File = null;
   constructor(private _formBuilder : FormBuilder,
               private consultaService: ConsultaService,
-              private generalService: GeneralService) { }
+              private generalService: GeneralService,
+              private messageService: MessageService) { }
 
   ngOnInit() {
-    console.log('modal agregar con')
+    console.log(this.selectedFoto)
     this.generalService.getEspecialidades().subscribe(res=>{
       this.especialidad_list = res;
-      console.log(res);
     })
     this.agregarConsultaForm = this.builderForm();
   }
 
   builderForm(){
     let form = this._formBuilder.group({
-      nombreConsulta: [null, [Validators.required]],
+      tituloConsulta: [null, [Validators.required]],
       descripcionConsulta: [null, [Validators.required]],
       especialidad: [null, [Validators.required]],
       precioConsulta: [null, [Validators.required]],
-      fotoConsulta: [null, [Validators.required]]
+      // fotoConsulta: [null, [Validators.required]]
     }) 
     form.valueChanges.subscribe(()=>{
       // this.invalidForm = this.loginForm.invalid;
@@ -41,27 +47,39 @@ export class ModalAgregarConsultaComponent implements OnInit {
     return form;
   }
 
-  get nombreConsulta()    {return this.agregarConsultaForm.controls['nombreConsulta']};
+  get tituloConsulta()    {return this.agregarConsultaForm.controls['tituloConsulta']};
   get descripcionConsulta()    {return this.agregarConsultaForm.controls['descripcionConsulta']};
   get especialidad()    {return this.agregarConsultaForm.controls['especialidad']};
   get precioConsulta()    {return this.agregarConsultaForm.controls['precioConsulta']};
+  // get fotoConsulta()    {return this.agregarConsultaForm.controls['foto']};
   
 
   onFileChange(e){
-    this.selectedFoto = <File>e.target.files[0];
-    console.log(e)
+    // this.selectedFoto = <File>e.target.files[0];
+    this.selectedFoto = e.currentFiles[0];
+    console.log(this.selectedFoto)
   }
 
   crearConsulta(){
     
+    this.isLoading = true;
     const formData = new FormData();
-    formData.append('nombreConsulta'   , this.nombreConsulta.value);
+    formData.append('token' , this.token);
+    formData.append('metadata' , this.metadata);
+    formData.append('tituloConsulta'   , this.tituloConsulta.value);
     formData.append('descripcionConsulta'   , this.descripcionConsulta.value);
     formData.append('especialidad'   , this.especialidad.value);
     formData.append('precioConsulta'   , this.precioConsulta.value);
     formData.append('fotoConsulta', this.selectedFoto);
-    console.log(formData)
     this.consultaService.crearConsulta(formData).subscribe((res:any)=>{
+      this.isLoading = false;
+      if(res.status == 0){
+        this.messageService.add({severity:'success', detail:res.msj});
+        this.closeDialog.emit();
+        this.agregarConsultaForm.reset();
+      }else{
+        this.messageService.add({severity:'error', detail:res.msj});
+      }
       console.log(res);
     })
 

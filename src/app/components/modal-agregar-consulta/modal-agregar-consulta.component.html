@@ -1,38 +1,35 @@
-<div class="form-body">
-    <form [formGroup]="agregarConsultaForm" class="form-agregarConsulta">
-        <mat-form-field appearance="fill">
-            <mat-label>Nombre de Consulta</mat-label>
-            <input type="email" matInput placeholder="Ingrese el nombre de la consulta" formControlName="nombreConsulta">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Descripción de Consulta</mat-label>
-            <input  matInput placeholder="Ingrese la descripción de la consulta" formControlName="descripcionConsulta">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Especialidad</mat-label>
-            <mat-select formControlName="especialidad">
-                <mat-option *ngFor="let espe of especialidad_list"  [value]="espe.id_especialidad">
-                    {{espe.descripcion}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Precio</mat-label>
-            <input type="number" matInput placeholder="Ingrese el precio" formControlName="precioConsulta">
-        </mat-form-field>
-
-        
-        
-        <mat-form-field class="foto" appearance="fill" >
-            <mat-label>Adjuntar foto</mat-label>
-            <input matInput [disabled]="true">
-            <button mat-raised-button color=primary><input type="file" formControlName="fotoConsulta" (change)="onFileChange($event)"></button>
-        </mat-form-field>
-
-        
-        
-        <button mat-raised-button color="primary" [disabled]="!agregarConsultaForm.valid" (click)="crearConsulta()">Crear Consulta</button>
-    </form>
-</div>
+<form [formGroup]="agregarConsultaForm">
+    <p-progressBar *ngIf="isLoading" mode="indeterminate" [style]="{height: '4px'}"></p-progressBar>
+    <div class="p-fluid ">
+        <div class="p-field">
+            <label for="firstname1">Titulo Consulta</label>
+            <input id="firstname1" type="text" pInputText formControlName="tituloConsulta"> 
+        </div>
+    
+        <div class="p-field">
+            <label for="lastname1">Descripción Consulta</label>
+            <textarea [rows]="2" [cols]="30" pInputTextarea formControlName="descripcionConsulta" ></textarea>
+        </div>
+    
+        <div class="p-field">
+            <label for="lastname1">Especialidad</label>
+            <p-dropdown [options]="especialidad_list" placeholder="Seleccione una especialidad" optionLabel="descripcion" optionValue="id_especialidad" formControlName="especialidad"></p-dropdown>
+        </div>
+    
+        <div class="p-field">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon" >$</span>
+                <input type="number" pInputText placeholder="Precio" formControlName="precioConsulta">   
+                <span class="p-inputgroup-addon">.00</span>      
+            </div>
+        </div>
+    
+        <div class="p-field">
+            <p-fileUpload #fileInput name="fotito" (onSelect)="onFileChange($event)" [showUploadButton]="false" [showCancelButton]="false"></p-fileUpload> 
+            <!-- <button mat-raised-button color=primary><input type="file" formControlName="fotoConsulta" (change)="onFileChange($event)"></button> -->
+        </div>
+    
+        <!-- <button mat-raised-button color="primary" [disabled]="!agregarConsultaForm.valid" (click)="crearConsulta()">Crear Consulta</button> -->
+        <button pButton type="button" [disabled]="!agregarConsultaForm.valid" (click)="crearConsulta()" label="Crear Consulta" ></button>
+    </div>
+</form>

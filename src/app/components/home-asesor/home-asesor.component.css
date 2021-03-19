@@ -107,12 +107,3 @@
     margin-right: 5%;
   }
 
-  .btn-toggle-sidenav{
-    display: flex;
-    position: absolute;
-    justify-content: start;
-    align-items: flex-start;
-  }
-  .ui-fieldset .ui-state-default {
-    background: none;
-}
