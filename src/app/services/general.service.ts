@@ -9,7 +9,7 @@ import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 })
 export class GeneralService {
 
-  private api_uri = environment.API_URL;
+  private api_uri = environment.API_URL + '/api/general';
   nombres_usuario = new BehaviorSubject<string>(null);
   constructor(private http: HttpClient,
               private router: Router) { }

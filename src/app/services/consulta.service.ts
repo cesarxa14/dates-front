@@ -9,16 +9,15 @@ import { environment } from '../../environments/environment';
 export class ConsultaService {
 
   
-  private api_uri = environment.API_URL;
+  private api_uri = environment.API_URL + '/api/consultants';
   constructor(private http: HttpClient,
               private router: Router) { }
 
   crearConsulta(obj){
-    console.log(obj)
-    return this.http.post(`${this.api_uri}/api/consultants/crearConsulta`, obj);
+    return this.http.post(`${this.api_uri}/crearConsulta`, obj);
   }
 
   getConsultasByAsesor(params){
-    return this.http.get(`${this.api_uri}/api/consultants/getConsultasByAsesor`, {params});
+    return this.http.get(`${this.api_uri}/getConsultasByAsesor`, {params});
   }
 }

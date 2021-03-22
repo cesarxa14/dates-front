@@ -21,6 +21,7 @@ export class HomeAsesorComponent implements OnInit {
 
   
   display:boolean = false;
+  mis_consultas: Array<any> = [];
   productos:any;
   responsiveOptions:any;
   items: MenuItem[];
@@ -57,40 +58,40 @@ export class HomeAsesorComponent implements OnInit {
                               ];
                                 this.productos = [
                                   {
-                                    "id": "1000",
-                                    "code": "f230fh0g3",
-                                    "name": "Bamboo Watch",
-                                    "description": "Product Description",
-                                    "image": "https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png",
-                                    "price": 65,
-                                    "category": "Accessories",
-                                    "quantity": 24,
-                                    "inventoryStatus": "INSTOCK",
-                                    "rating": 3.5
+                                    id: "1000",
+                                    code: "f230fh0g3",
+                                    name: "Bamboo Watch",
+                                    description: "Product Description",
+                                    image: "https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png",
+                                    price: 65,
+                                    category: "Accessories",
+                                    quantity: 24,
+                                    inventoryStatus: "INSTOCK",
+                                    rating: 3.5
                                   },
                                   {
-                                    "id": "1001",
-                                    "code": "nvklal433",
-                                    "name": "Black Watch",
-                                    "description": "Product Description",
-                                    "image": "https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png",
-                                    "price": 72,
-                                    "category": "Accessories",
-                                    "quantity": 61,
-                                    "inventoryStatus": "INSTOCK",
-                                    "rating": 4
+                                    id: "1001",
+                                    code: "nvklal433",
+                                    name: "Black Watch",
+                                    description: "Product Description",
+                                    image: "https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png",
+                                    price: 72,
+                                    category: "Accessories",
+                                    quantity: 61,
+                                    inventoryStatus: "INSTOCK",
+                                    rating: 4
                                   },
                                   {
-                                    "id": "1002",
-                                    "code": "zz21cz3c1",
-                                    "name": "Blue Band",
-                                    "description": "Product Description",
-                                    "image": "https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png",
-                                    "price": 79,
-                                    "category": "Fitness",
-                                    "quantity": 2,
-                                    "inventoryStatus": "LOWSTOCK",
-                                    "rating": 3
+                                    id: "1002",
+                                    code: "zz21cz3c1",
+                                    name: "Blue Band",
+                                    description: "Product Description",
+                                    image: "https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png",
+                                    price: 79,
+                                    category: "Fitness",
+                                    quantity: 2,
+                                    inventoryStatus: "LOWSTOCK",
+                                    rating: 3
                                   }]
               }
 
@@ -100,6 +101,7 @@ export class HomeAsesorComponent implements OnInit {
     .set('id_persona', this.metadata.id_persona);
     this.consultaService.getConsultasByAsesor(params).subscribe((res:any)=>{
       console.log(res);
+      this.mis_consultas = res;
     })
     this.items = [
       {
@@ -141,7 +143,9 @@ export class HomeAsesorComponent implements OnInit {
     console.log('holaa csmree')
   }
 
-  closeDialog(){
+  closeDialog(e){
+    console.log('obj output', e)
+    this.mis_consultas.push(e);
     this.display = false;
   }
 

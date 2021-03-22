@@ -28,6 +28,7 @@ export class ModalAgregarConsultaComponent implements OnInit {
   ngOnInit() {
     console.log(this.selectedFoto)
     this.generalService.getEspecialidades().subscribe(res=>{
+      console.log('espes', res)
       this.especialidad_list = res;
     })
     this.agregarConsultaForm = this.builderForm();
@@ -60,6 +61,10 @@ export class ModalAgregarConsultaComponent implements OnInit {
     console.log(this.selectedFoto)
   }
 
+  hola(e){
+    console.log(e);
+  }
+
   crearConsulta(){
     
     this.isLoading = true;
@@ -75,7 +80,13 @@ export class ModalAgregarConsultaComponent implements OnInit {
       this.isLoading = false;
       if(res.status == 0){
         this.messageService.add({severity:'success', detail:res.msj});
-        this.closeDialog.emit();
+        let obj = {
+          titulo: this.tituloConsulta.value,
+          descripcion : this.descripcionConsulta.value,
+          especialidad: this.especialidad.value,
+          precio: this.precioConsulta.value
+        }
+        this.closeDialog.emit(obj);
         this.agregarConsultaForm.reset();
       }else{
         this.messageService.add({severity:'error', detail:res.msj});

@@ -29,8 +29,8 @@
 <div class="prime-fieldset-consultas">
   <p-fieldset legend="Mis Consultas">
     <button style="float: right;" pButton type="button" label="" icon="pi pi-plus" (click)="agregarConsulta()" pTooltip="Agregar Consulta" tooltipPosition="top"></button>
-    <p-carousel [value]="productos" [numVisible]="3" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
-      <ng-template let-product pTemplate="item">
+    <p-carousel [value]="mis_consultas" [numVisible]="1" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+      <ng-template let-consult pTemplate="item">
         <!-- <div class="product-item">
             <div class="product-item-content">
                 <div class="p-mb-3">
@@ -49,11 +49,13 @@
         </div> -->
         <p-card>
           <ng-template pTemplate="header">
-            Titulo consulta
+           <h4> {{consult.titulo}} </h4> 
           </ng-template>
-            Imagen consulta
+          <img style="height: 150px; width: 150px;" src="http://localhost:3000/upload/{{consults.foto_consulta}}" alt="">
+            <!-- Imagen consulta -->
           <ng-template pTemplate="footer">
-              Espec,y Descrip consulta
+              <h5><i>{{consult.descripcion}}</i></h5>
+              <!-- <h5>{{consults.}}</h5> -->
           </ng-template>
       </p-card>
     </ng-template>
@@ -138,7 +140,7 @@
 </div>
 
 <p-dialog header="Crear Consulta" [(visible)]="display" [style]="{width: '50vw'}" modal="true">
-  <app-modal-agregar-consulta (closeDialog)="closeDialog()"></app-modal-agregar-consulta>
+  <app-modal-agregar-consulta (closeDialog)="closeDialog($event)"></app-modal-agregar-consulta>
 </p-dialog>
 
 

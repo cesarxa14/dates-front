@@ -13,7 +13,7 @@
     
         <div class="p-field">
             <label for="lastname1">Especialidad</label>
-            <p-dropdown [options]="especialidad_list" placeholder="Seleccione una especialidad" optionLabel="descripcion" optionValue="id_especialidad" formControlName="especialidad"></p-dropdown>
+            <p-dropdown [options]="especialidad_list" (onChange)="hola($event)" placeholder="Seleccione una especialidad" optionLabel="descripcion" optionValue="id_especialidad" formControlName="especialidad"></p-dropdown>
         </div>
     
         <div class="p-field">
