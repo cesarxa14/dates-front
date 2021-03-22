@@ -3,8 +3,9 @@
       <span>DATES</span>     
     </mat-toolbar>
 </div>
-
 <app-sidenav></app-sidenav>
+<p-messages *ngIf="!emailVerificado" [(value)]="msgs"></p-messages>
+
 
 <div class="prime-menu">
   <p-menubar  [model]="items">
@@ -12,25 +13,12 @@
   </p-menubar>
 </div>
 <p-toast position="top-right"></p-toast>
-<!-- <p-sidebar [(visible)]="displaySideNav">
-  <div style="text-align: center;">
-    <img style="height: 80px; width: 80px; border-radius: 30%;" src="https://www.kindpng.com/picc/m/495-4952535_create-digital-profile-icon-blue-user-profile-icon.png" alt="">
-    <h2>Nombre y Apellido</h2>
-    <p-inputSwitch (onChange)="switchedOnline($event)" [(ngModel)]="flag_Online"></p-inputSwitch>
-  </div>
-</p-sidebar> -->
-<!-- <div class="btn-toggle-sidenav">
-  <p-button (click)="displaySideNav = true" class="p-button-secondary" icon="pi pi-chevron-right"></p-button>
-</div> -->
 
-<!-- <p-divider align="right" type="dashed">
-  <span class="p-tag" (click)="console()">Ver todo</span>
-</p-divider> -->
 <div class="prime-fieldset-consultas">
   <p-fieldset legend="Mis Consultas">
     <button style="float: right;" pButton type="button" label="" icon="pi pi-plus" (click)="agregarConsulta()" pTooltip="Agregar Consulta" tooltipPosition="top"></button>
-    <p-carousel [value]="mis_consultas" [numVisible]="1" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
-      <ng-template let-consult pTemplate="item">
+    <p-carousel [value]="list.value" [numVisible]="1" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+      <ng-template let-consults pTemplate="item">
         <!-- <div class="product-item">
             <div class="product-item-content">
                 <div class="p-mb-3">
@@ -49,13 +37,12 @@
         </div> -->
         <p-card>
           <ng-template pTemplate="header">
-           <h4> {{consult.titulo}} </h4> 
+           <h4> {{consults.titulo}} </h4> 
           </ng-template>
           <img style="height: 150px; width: 150px;" src="http://localhost:3000/upload/{{consults.foto_consulta}}" alt="">
             <!-- Imagen consulta -->
           <ng-template pTemplate="footer">
-              <h5><i>{{consult.descripcion}}</i></h5>
-              <!-- <h5>{{consults.}}</h5> -->
+              <h5><i>{{consults.descripcion}}</i></h5>
           </ng-template>
       </p-card>
     </ng-template>
@@ -74,33 +61,11 @@
           </mat-card> -->
   
   </p-fieldset>
-</div>
-
+</div> 
 
 
 <div class="prime-fieldset-citas">
   <p-fieldset legend="Mis Citas" >
-    <!-- <div class="citas-list">
-      
-      <p-table [value]="cars">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Vin</th>
-                <th>Year</th>
-                <th>Brand</th>
-                <th>Color</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-car>
-            <tr>
-                <td>{{car.vin}}</td>
-                <td>{{car.year}}</td>
-                <td>{{car.brand}}</td>
-                <td>{{car.color}}</td>
-            </tr>
-        </ng-template>
-    </p-table>
-    </div> -->
     <p-table [value]="productos">
       <ng-template pTemplate="caption">
           <div class="p-d-flex p-ai-center p-jc-between">

@@ -18,6 +18,8 @@ import {DropdownModule} from 'primeng/dropdown';
 import {FileUploadModule} from 'primeng/fileupload';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {ProgressBarModule} from 'primeng/progressbar';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 
 import {FilterService, MessageService, PrimeNGConfig} from 'primeng/api';
@@ -45,7 +47,9 @@ import {FilterService, MessageService, PrimeNGConfig} from 'primeng/api';
        DropdownModule,
        FileUploadModule,
        ScrollPanelModule,
-       ProgressBarModule
+       ProgressBarModule,
+       MessagesModule,
+       MessageModule
        
        
 
@@ -69,7 +73,9 @@ import {FilterService, MessageService, PrimeNGConfig} from 'primeng/api';
        DropdownModule,
        FileUploadModule,
        ScrollPanelModule,
-       ProgressBarModule
+       ProgressBarModule,
+       MessagesModule,
+       MessageModule
     ],
     providers: [MessageService, FilterService, PrimeNGConfig]
 })

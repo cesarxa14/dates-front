@@ -7,8 +7,9 @@ import {Globals} from '../../../globals';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MenuItem} from 'primeng/api';
 import { ModalAgregarConsultaComponent} from '../modal-agregar-consulta/modal-agregar-consulta.component';
-import {MessageService} from 'primeng/api';
+import {MessageService, Message} from 'primeng/api';
 import { HttpParams } from '@angular/common/http';
+import { BehaviorSubject} from 'rxjs'
 
 
 
@@ -19,7 +20,9 @@ import { HttpParams } from '@angular/common/http';
 })
 export class HomeAsesorComponent implements OnInit {
 
-  
+  list = new BehaviorSubject<any>(null);
+  msgs: Message[];
+  emailVerificado:boolean;
   display:boolean = false;
   mis_consultas: Array<any> = [];
   productos:any;
@@ -38,6 +41,7 @@ export class HomeAsesorComponent implements OnInit {
               private consultaService: ConsultaService
               // public filterService: FilterService
               ) { 
+                this.emailVerificado = this.metadata.flag_verificado;
                 
                                 this.responsiveOptions = [
                                   {
@@ -96,13 +100,19 @@ export class HomeAsesorComponent implements OnInit {
               }
 
   ngOnInit() {
+   this.msgs = [{severity:'warn', summary:'Verifica tu email !', detail:'No podrás usar algunas funciones de la aplicación mientras no estés verificado.'}];
     const params = new HttpParams()
     .set('token', this.token)
     .set('id_persona', this.metadata.id_persona);
     this.consultaService.getConsultasByAsesor(params).subscribe((res:any)=>{
-      console.log(res);
+      console.log('rerere')
+      // console.log(res);
+      this.list.next(res);
+      console.log(this.list.value)
       this.mis_consultas = res;
     })
+
+    console.log('mis consult', this.mis_consultas)
     this.items = [
       {
       label: 'Home',
@@ -125,6 +135,10 @@ export class HomeAsesorComponent implements OnInit {
     
   }
 
+  msg(){
+    // this.messageService.add({severity:'info', summary:'Info Message', detail:'PrimeNG rocks', life:10000});
+  }
+
   agregarConsulta(){
     // this.dialog.open(ModalAgregarConsultaComponent,{
     //   width: '1100px',
@@ -144,8 +158,10 @@ export class HomeAsesorComponent implements OnInit {
   }
 
   closeDialog(e){
-    console.log('obj output', e)
+    console.log('new con', e)
     this.mis_consultas.push(e);
+    this.list.next(this.mis_consultas);
+    console.log('despues de add',this.list.value )
     this.display = false;
   }
 

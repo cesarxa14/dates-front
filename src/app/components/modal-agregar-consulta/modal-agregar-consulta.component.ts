@@ -77,16 +77,14 @@ export class ModalAgregarConsultaComponent implements OnInit {
     formData.append('precioConsulta'   , this.precioConsulta.value);
     formData.append('fotoConsulta', this.selectedFoto);
     this.consultaService.crearConsulta(formData).subscribe((res:any)=>{
+      console.log(res)
       this.isLoading = false;
       if(res.status == 0){
         this.messageService.add({severity:'success', detail:res.msj});
-        let obj = {
-          titulo: this.tituloConsulta.value,
-          descripcion : this.descripcionConsulta.value,
-          especialidad: this.especialidad.value,
-          precio: this.precioConsulta.value
-        }
-        this.closeDialog.emit(obj);
+        let new_c = res.new_consult;
+        console.log('new_c', new_c)
+
+        this.closeDialog.emit(new_c);
         this.agregarConsultaForm.reset();
       }else{
         this.messageService.add({severity:'error', detail:res.msj});
