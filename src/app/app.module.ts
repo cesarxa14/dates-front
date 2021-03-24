@@ -20,6 +20,7 @@ import { HomeClienteComponent } from './components/home-cliente/home-cliente.com
 import { HomeAsesorComponent } from './components/home-asesor/home-asesor.component';
 import { ModalAgregarConsultaComponent } from './components/modal-agregar-consulta/modal-agregar-consulta.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     HomeClienteComponent,
     HomeAsesorComponent,
     ModalAgregarConsultaComponent,
-    SidenavComponent
+    SidenavComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

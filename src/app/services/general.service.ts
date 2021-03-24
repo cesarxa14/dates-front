@@ -23,5 +23,9 @@ export class GeneralService {
     return this.http.get(`${this.api_uri}/getEspecialidades`);
   }
 
+  switchedAsesorStatus(obj){
+    return this.http.post(`${this.api_uri}/switchedAsesorStatus`, obj);
+  }
+
   get
 }

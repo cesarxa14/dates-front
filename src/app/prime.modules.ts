@@ -49,7 +49,8 @@ import {FilterService, MessageService, PrimeNGConfig} from 'primeng/api';
        ScrollPanelModule,
        ProgressBarModule,
        MessagesModule,
-       MessageModule
+       MessageModule,
+       RatingModule
        
        
 
@@ -75,7 +76,8 @@ import {FilterService, MessageService, PrimeNGConfig} from 'primeng/api';
        ScrollPanelModule,
        ProgressBarModule,
        MessagesModule,
-       MessageModule
+       MessageModule,
+       RatingModule
     ],
     providers: [MessageService, FilterService, PrimeNGConfig]
 })

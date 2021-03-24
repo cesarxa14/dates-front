@@ -67,20 +67,20 @@
 <div class="prime-fieldset-citas">
   <p-fieldset legend="Mis Citas" >
     <p-table [value]="productos">
-      <ng-template pTemplate="caption">
+      <!-- <ng-template pTemplate="caption">
           <div class="p-d-flex p-ai-center p-jc-between">
               Products
               <p-button icon="pi pi-refresh"></p-button>
           </div>
-      </ng-template>
+      </ng-template> -->
       <ng-template pTemplate="header">
           <tr>
-              <th>Name</th>
-              <th>Image</th>
-              <th>Price</th>
-              <th>Category</th>
-              <th>Reviews</th>
-              <th>Status</th>
+              <th>Cliente</th>
+              <th>Titulo de Consulta</th>
+              <th>Descripcion</th>
+              <th>Especialidad</th>
+              <th>Fecha Programada</th>
+              <th>Costo</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-product>
@@ -95,7 +95,7 @@
       </ng-template>
       <ng-template pTemplate="summary">
           <div class="p-d-flex p-ai-center p-jc-between">
-              In total there are {{productos ? productos.length : 0 }} products.
+              Tienes {{productos ? productos.length : 0 }} citas en total.
           </div>
       </ng-template>
   </p-table>

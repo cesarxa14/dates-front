@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+.contenedor{
+    /* border: 1px solid black; */
+    /* border-radius: 1%; */
+    /* box-shadow: 3px 3px darkgrey; */
+    height: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    
+}
+
+.item{
+    /* border: 1px solid red; */
+    height: 130px;
+}
+.cont-1{
+    display: grid;
+    grid-template-columns: 35% 65%;
+    height: 200px;
+}
+
+.foto-fullname{
+    max-height: 200px;
+    /* border: 2px solid purple; */
+    display: grid;
+    grid-template-rows: 80% 20% ;
+    text-align: center;
+}
+
+.photo-profile{
+    max-height: 100%;
+    width: 60%;
+    border-radius: 200%;
+}
+
+.details{
+    text-align: center;
+    display: grid;
+    grid-template-rows: 30% 50% 20%;
+}
+
+.cont-2{
+    display: grid;
+    grid-template-rows: 30% 70%;
+}
+
+.header{
+    margin: 2%;
+}
+
+.disponibilidad{
+    margin: 5%;
+}
+
+.cont-3{
+    height: auto;
+}
+
+.estudios{
+    margin-left: 10px;
+    display: grid;
+    grid-template-columns: 50% 10% 5%;
+}

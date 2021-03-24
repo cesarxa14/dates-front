@@ -123,6 +123,11 @@ export class HomeAsesorComponent implements OnInit {
         icon: 'pi pi-globe'
       },
       {
+        label: 'Perfil',
+        icon: 'pi pi-user',
+        url: '/profile'
+      },
+      {
         label: 'Cerrar Sesión',
         command: ()=> this.logout()
       }
