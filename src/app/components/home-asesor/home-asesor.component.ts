@@ -158,15 +158,11 @@ export class HomeAsesorComponent implements OnInit {
     this.authService.logout();
   }
 
-  console(){
-    console.log('holaa csmree')
-  }
+ 
 
   closeDialog(e){
-    console.log('new con', e)
     this.mis_consultas.push(e);
     this.list.next(this.mis_consultas);
-    console.log('despues de add',this.list.value )
     this.display = false;
   }
 

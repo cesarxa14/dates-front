@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  display: boolean = false;
   val = 4;
   constructor() { }
 
@@ -15,6 +16,7 @@ export class ProfileComponent implements OnInit {
 
   openModalEdit(){
     console.log('open modal edit')
+    this.display = true;
   }
 
 }

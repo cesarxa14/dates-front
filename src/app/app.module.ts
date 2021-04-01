@@ -21,6 +21,7 @@ import { HomeAsesorComponent } from './components/home-asesor/home-asesor.compon
 import { ModalAgregarConsultaComponent } from './components/modal-agregar-consulta/modal-agregar-consulta.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ModalEditarPerfilComponent } from './components/modal-editar-perfil/modal-editar-perfil.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     HomeAsesorComponent,
     ModalAgregarConsultaComponent,
     SidenavComponent,
-    ProfileComponent
+    ProfileComponent,
+    ModalEditarPerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -48,11 +50,11 @@ import { ProfileComponent } from './components/profile/profile.component';
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
     Globals,
-    // {
-    //   provide:HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptorService,
-    //   multi:true
-    // }
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi:true
+    }
   ],
   entryComponents:[
     ModalAgregarConsultaComponent

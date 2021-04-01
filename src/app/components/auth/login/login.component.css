@@ -2,12 +2,13 @@
     /* border: 2px solid black; */
     margin: 50px 30%;
     height: auto;
+    /* text-align: center; */
 }
 
 .form-header{
     text-align: center;
-    color: white;
-    background-color: #455A64;
+    /* color: white;
+    background-color: #455A64; */
 }
 
 .form-login{
@@ -21,3 +22,6 @@
 .p-float-label{
     margin-top: 30px;
 }
+.ui-card {
+    background-color: yellow !important;
+  }

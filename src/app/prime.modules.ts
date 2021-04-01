@@ -20,6 +20,7 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {StepsModule} from 'primeng/steps';
 
 
 import {FilterService, MessageService, PrimeNGConfig} from 'primeng/api';
@@ -50,7 +51,8 @@ import {FilterService, MessageService, PrimeNGConfig} from 'primeng/api';
        ProgressBarModule,
        MessagesModule,
        MessageModule,
-       RatingModule
+       RatingModule,
+       StepsModule
        
        
 
@@ -77,7 +79,8 @@ import {FilterService, MessageService, PrimeNGConfig} from 'primeng/api';
        ProgressBarModule,
        MessagesModule,
        MessageModule,
-       RatingModule
+       RatingModule,
+       StepsModule
     ],
     providers: [MessageService, FilterService, PrimeNGConfig]
 })

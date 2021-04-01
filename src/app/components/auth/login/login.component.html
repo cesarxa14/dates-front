@@ -1,4 +1,4 @@
-<div>
+ <div>
     <mat-toolbar color="primary">
       <span>DATES</span>
       <span class="example-spacer"></span>
@@ -7,29 +7,67 @@
 </div>
 
 
-<div class="login-container">
+<!--<div class="login-container">
     
     <div class="form-header">
         <h1>Iniciar Sesion</h1>
     </div>
     <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
     <div class="form-body">
-        <form [formGroup]="loginForm" class="form-login">
-            <mat-form-field appearance="fill">
+        <form [formGroup]="loginForm" class="form-login"> -->
+            <!-- <mat-form-field appearance="fill">
                 <mat-label>Correo</mat-label>
                 <input type="email" matInput placeholder="Ingresa tu correo" formControlName="correo">
-            </mat-form-field>
+            </mat-form-field> -->
+
+            <!-- <span class="p-float-label p-fluid">
+                <input id="float-input" type="text" pInputText> 
+                <label for="float-input">Correo</label>
+            </span>
+
+            <span class="p-float-label p-fluid">
+                <input id="float-input" type="text" pInputText> 
+                <label for="float-input">Contraseña</label>
+            </span> -->
 
           
-            <mat-form-field appearance="fill">
+            <!-- <mat-form-field appearance="fill">
                 <mat-label>Contraseña</mat-label>
                 <input type="password" matInput placeholder="Ingresa tu contraseña" formControlName="password">
-            </mat-form-field>
-            <a style="text-align: center;" href="https://support.google.com/accounts/answer/7682439?hl=es-419">¿Olvidaste tu contraseña?</a>
+            </mat-form-field> -->
+            <!-- <a style="text-align: center;" href="https://support.google.com/accounts/answer/7682439?hl=es-419">¿Olvidaste tu contraseña?</a>
             <a style="text-align: center;" routerLink="/register">¿No tienes cuenta?</a>
             <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login()">Entrar</button>
 
         </form>
     </div>
+</div> -->
+
+<div class="login-container">
+    <p-card styleClass="background-color: red">
+        <ng-template class="form-header"  pTemplate="header">
+            <h1 > Iniciar Sesión</h1>
+        </ng-template>
+        <div class="form-login">
+            <form [formGroup]="loginForm">
+                <span class="p-float-label p-fluid">
+                    <input id="float-input" type="text" pInputText formControlName="correo"> 
+                    <label for="float-input">Correo</label>
+                </span>
+
+                <span class="p-float-label p-fluid">
+                    <input id="float-input" type="password" pInputText formControlName="password"> 
+                    <label for="float-input">Contraseña</label>
+                </span>
+            </form>
+            <a style="text-align: center;" href="https://support.google.com/accounts/answer/7682439?hl=es-419">¿Olvidaste tu contraseña?</a>
+            <a style="text-align: center;" routerLink="/register">¿No tienes cuenta?</a>
+        </div>
+        <ng-template pTemplate="footer">
+            <!-- Footer content here -->
+            <button pButton class="p-fluid" type="button" label="Entrar" [disabled]="!loginForm.valid" (click)="login()" ></button>
+        </ng-template>
+    </p-card>
+
 </div>
 
