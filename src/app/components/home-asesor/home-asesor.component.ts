@@ -3,7 +3,7 @@ import { AuthService} from '../../services/auth.service';
 import {Globals} from '../../../globals';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ModalAgregarConsultaComponent} from '../modal-agregar-consulta/modal-agregar-consulta.component';
-import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
+
 
 @Component({
   selector: 'app-home-asesor',
