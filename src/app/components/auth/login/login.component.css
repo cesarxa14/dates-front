@@ -11,8 +11,13 @@
 }
 
 .form-login{
+    width: 100%;
     margin-top: 10px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
+}
+
+.p-float-label{
+    margin-top: 30px;
 }

@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   token:any;
   metadata:any;
-  especilidad_list:any = [];
+  roles_list:any = [];
   isLoading:boolean;
   registerForm: FormGroup;
   constructor(private _formBuilder : FormBuilder,
@@ -25,9 +25,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.builderForm();
-    this.generalService.getEspecialidad().subscribe(res=>{
+    this.generalService.getRoles().subscribe(res=>{
       console.log(res)
-      this.especilidad_list = res;
+      this.roles_list = res;
     })
   }
 

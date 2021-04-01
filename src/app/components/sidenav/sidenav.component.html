@@ -1,0 +1,11 @@
+<p-sidebar [(visible)]="displaySideNav">
+    <div style="text-align: center;">
+      <img style="height: 80px; width: 80px; border-radius: 30%;" src="https://i.pinimg.com/originals/6d/ff/25/6dff25c17a32509c01e8e3dac9a4ec4b.jpg" alt="">
+      <h2>{{user_nombre}} {{user_apellido_pa}}</h2>
+      <p-inputSwitch (onChange)="switchedOnline($event)" [(ngModel)]="flag_Online"></p-inputSwitch>
+    </div>
+</p-sidebar>
+
+<div class="btn-toggle-sidenav">
+    <p-button (click)="displaySideNav = true" class="p-button-secondary" icon="pi pi-chevron-right"></p-button>
+  </div>

@@ -3,6 +3,7 @@
     height: 100%;
   }
   
+  
   .example-sidenav-content {
     display: flex;
     height: 100%;
@@ -74,6 +75,7 @@
 .items-consultas{
     display: flex;
     flex-direction: row;
+    width: 250px;
     height: 310px;
     margin-left: 5%;
     margin-right: 5%;
@@ -89,3 +91,20 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
+
+  .prime-menu{
+    margin-left:5%;
+    margin-right: 5%;
+  }
+
+  .prime-fieldset-consultas{
+    margin-top: 50px;
+    margin-left:5%;
+    margin-right: 5%;
+  }
+  .prime-fieldset-citas{
+    margin-top: 50px;
+    margin-left:5%;
+    margin-right: 5%;
+  }
+

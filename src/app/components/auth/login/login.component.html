@@ -19,6 +19,8 @@
                 <mat-label>Correo</mat-label>
                 <input type="email" matInput placeholder="Ingresa tu correo" formControlName="correo">
             </mat-form-field>
+
+          
             <mat-form-field appearance="fill">
                 <mat-label>Contraseña</mat-label>
                 <input type="password" matInput placeholder="Ingresa tu contraseña" formControlName="password">
@@ -26,6 +28,7 @@
             <a style="text-align: center;" href="https://support.google.com/accounts/answer/7682439?hl=es-419">¿Olvidaste tu contraseña?</a>
             <a style="text-align: center;" routerLink="/register">¿No tienes cuenta?</a>
             <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login()">Entrar</button>
+
         </form>
     </div>
 </div>

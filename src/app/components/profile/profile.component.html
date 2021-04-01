@@ -1,0 +1,81 @@
+<div>
+    <mat-toolbar color="primary">
+      <span>DATES</span>     
+    </mat-toolbar>
+</div>
+<app-sidenav></app-sidenav>
+
+<p-card class="contenedor">
+
+  <button style="float: right;" (click)="openModalEdit()" pTooltip="Editar Perfil" pButton type="button" class="p-button-raised p-button-rounded" icon="pi pi-user-edit"></button>
+  <div class="item cont-1">
+
+    <div class="foto-fullname">
+      <div class="fotoo">
+        <img class="photo-profile" src="https://i.pinimg.com/originals/6d/ff/25/6dff25c17a32509c01e8e3dac9a4ec4b.jpg" alt="">
+      </div>
+      <div class="nombree">
+        <h1>Cesar Torres</h1>
+      </div>
+      
+    </div>
+
+    <div class="details">
+      <div><h2>Experto en Psicologia</h2></div>
+      <div><h5>Mayormente especializado en tratar con niños menores</h5></div>
+      <div><p-rating readonly="true" [iconCancelStyle]="{'display':'none'}" [(ngModel)]="val"></p-rating></div>
+    </div>
+
+  </div>
+  <p-divider></p-divider>
+
+  <div class="item cont-2">
+    <div class="header">
+      <h1>Disponibilidad</h1>
+    </div>
+    <div class="disponibilidad">
+      <div>
+        <p> <i>Lunes a Viernes 3pm</i> </p>
+      </div>
+
+    </div>
+  </div>
+
+  <p-divider></p-divider>
+  <div class="item cont-3">
+    <div class="header">
+      <h1>Estudios</h1>
+    </div>
+    <div class="estudios">
+      <div>
+        <h2 style="display: inline;">Universidad de Lima</h2>
+      </div>
+      <div>
+        <h4 style="display: inline;"><i>(2012-2016)</i></h4>
+      </div>      
+    </div>
+  </div>
+
+  <p-divider></p-divider>
+  <div class="item">
+    <div class="header">
+      <h1>Habilidades</h1>
+    </div>
+  </div>
+
+  <p-divider></p-divider>
+  <div class="item">
+    <div class="header">
+      <h1>Reseñas</h1>
+    </div>
+  </div>
+
+  <p-divider></p-divider>
+  <div class="item">
+    <div class="header">
+      <h1>Referencias</h1>
+    </div>
+  </div>
+
+</p-card>
+<!-- <p-messages *ngIf="!emailVerificado" [(value)]="msgs"></p-messages> -->
